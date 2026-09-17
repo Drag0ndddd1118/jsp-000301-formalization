@@ -1,0 +1,6 @@
+name = "jsp_000301_formalization"
+version = "0.1.0"
+defaultTargets = ["JSP_000301"]
+
+[[lean_lib]]
+name = "JSP_000301"
