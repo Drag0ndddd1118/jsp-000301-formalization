@@ -19,7 +19,7 @@ import subprocess
 import sys
 
 REPO = os.path.dirname(os.path.abspath(__file__))
-ALLOWED = {"Quot.sound", "propext"}
+ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 BRIDGE = "example : jsp000301Statement := disproof_conjecture"
 
 
