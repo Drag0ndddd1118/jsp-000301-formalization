@@ -80,3 +80,41 @@ lean /Volumes/Drag0ndddd/JustinSunPrize_Proofs/JSP_000301.lean
    - 附上机器验证构建记录。
 3. **申报形式化者（Formalizer）身份**：
    根据孙宇晨奖《Evaluation Rules》，你将作为 Formalizer 参与该题目 30% 奖金的评定与划拨！
+
+## Statement of record — `Challenge.lean`
+
+`Challenge.lean` declares the definitions the problem is phrased with and the proposition
+`jsp000301Statement`. It proves nothing, so a reviewer has only to read that one file to judge *what* has
+been claimed.
+
+```lean
+  ¬ (∀ n : Nat, IsPowerful n → IsPowerful (n + 1) → (IsSquare n ∨ IsSquare (n + 1)))
+```
+
+## Proof — `Submission.lean`
+
+`Submission.lean` imports `Challenge.lean`, so the proof and the statement refer to the *same*
+`jsp000301Statement` constant and cannot drift apart. The top-level result is
+
+```lean
+disproof_conjecture
+```
+
+It depends on `Quot.sound`, `propext` only, and the file contains no `sorry`, no `admit` and no `axiom`
+declaration. `check.py` type-checks the bridge
+
+```
+example : jsp000301Statement := disproof_conjecture
+```
+
+and re-runs the axiom audit.
+
+## Build and check
+
+```sh
+lake build
+python3 check.py
+```
+
+Toolchain: `leanprover/lean4:v4.34.0` (commit `293d5d0c0c3f3dded4688b3ccd6a33939ac5102b`). The development is self-contained:
+it uses Lean core only and depends on no external library.

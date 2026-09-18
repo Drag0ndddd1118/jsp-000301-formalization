@@ -20,14 +20,7 @@
     110^2 = 12100 < 12167 < 12168 < 12321 = 111^2.
 -/
 
-/-- A positive integer `n` is powerful if it can be represented as `a^2 * b^3`
-    for positive integers `a` and `b`. -/
-def IsPowerful (n : Nat) : Prop :=
-  ∃ a b : Nat, a > 0 ∧ b > 0 ∧ n = a^2 * b^3
-
-/-- A natural number `n` is a perfect square if `n = k^2` for some natural number `k`. -/
-def IsSquare (n : Nat) : Prop :=
-  ∃ k : Nat, n = k^2
+import Challenge
 
 /- Algebraic lemmas connecting power syntax with multiplication in pure Lean 4 -/
 theorem sq_eq_mul (k : Nat) : k^2 = k * k := by
@@ -93,3 +86,5 @@ theorem disproof_conjecture :
   rcases h_or with h1 | h2
   · exact hns1 h1
   · exact hns2 h2
+
+#print axioms disproof_conjecture

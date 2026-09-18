@@ -1,2 +1,5 @@
-.lake/
-lake-manifest.json
+/.lake/
+build/
+*.olean
+*.ilean
+*.trace
